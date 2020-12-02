@@ -1,0 +1,23 @@
+---
+layout: skinny
+title:  "My Poetry"
+permalink: /poetry/
+section: poetry
+---
+
+{% assign posts = site.poetry %}
+
+<!-- Poetry Index -->
+<main class="site-main">
+    <div class="site-content">
+        <div class="post-list inner">
+            {% for post in posts reversed %}
+            {% include postbox.html %}
+            {% endfor %}
+        </div><!-- .post-list -->
+
+        <!-- Pagination-->
+        {% include pagination.html %}
+
+    </div><!-- .site-content -->
+</main><!-- .site-main -->

@@ -1,17 +1,20 @@
 ---
 layout: post
 title:  "Color Fader"
-date:   2018-04-17
-categories: code sass mixin
+tags: [code, sass, mixin]
+author: Geoff
 ---
+
+Here's a quick blog post about a Sass mixin I wrote for a side-project.
+
+<!--more-->
 
 The following is a Sass mixin I recently wrote to tackle an issue for a project on GitHub where they wanted to have their header background fade between a number of colors.
 
 I set it up so a list of colors could be passed in and it wouldn't matter how many colors you wanted; the interval would always be evenly divided amongst them.
 
 **_colorFader.scss:**
-{% highlight sass %}
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+<pre><code>// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                                                //
 // mixin: colorFader                                              //
 // params: $animationName, $colorList                             //
@@ -70,16 +73,14 @@ I set it up so a list of colors could be passed in and it wouldn't matter how ma
             $frame: $frame + $interval;
         }
     }
-}
-{% endhighlight %}
+}}</code></pre>
 
 **Of Course...** the above vendor prefix blocks are unnecessary if you're using an auto-prefixer such as the one in css-next.
 
 ### Usage
 
 **styles.scss:**
-{% highlight sass %}
-// Import the fader mixin
+<pre><code>// Import the fader mixin
 @import "colorFader";
 
 // Apply to an ID (or class)
@@ -99,12 +100,10 @@ I set it up so a list of colors could be passed in and it wouldn't matter how ma
 $colorList: #76c261 #fdc345 #f8943 #e65453 #a759a8 #32afe2;
 
 // Call the fader, passing in the animation name and colors
-@include colorFader(colorfader, $colorList);
-{% endhighlight %}
+@include colorFader(colorfader, $colorList);}</code></pre>
 
 **styles.css:**
-{% highlight css %}
-#colorFaderDIV {
+<pre><code>#colorFaderDIV {
     background: red;
     -webkit-animation: colorfader linear infinite;
     -webkit-animation-duration: 90s;
@@ -143,19 +142,15 @@ $colorList: #76c261 #fdc345 #f8943 #e65453 #a759a8 #32afe2;
     50% {background: #e65453;}
     66.66667% {background: #a759a8;}
     83.33333% {background: #32afe2;}
-}
-{% endhighlight %}
+}</code></pre>
 
 **example.html:**
-{% highlight html %}
-<link href="/css/styles.css" rel="stylesheet" />
-...
-<div id="colorFaderDIV">Example</div>
-{% endhighlight %}
+
+<pre><code>&lt;div id="colorFaderDIV"&gt;Example&lt;/div&gt;</code></pre>
 
 The above code renders the following:
 <style>
-#navbar
+#colorFaderDIV
 {
     width: 100%;
     background: #76c261;
@@ -198,6 +193,6 @@ The above code renders the following:
     83.33333% {background: #32afe2;}
 }
 </style>
-<div id="navbar">Example</div>
-<br />
+<div id="colorFaderDIV">Example</div>
+
 [You can grab the code from this Gist, as well.](https://gist.github.com/GeoffFoley/78b92f3a32cba5ad5d714e870c24d3ce)

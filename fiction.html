@@ -1,0 +1,23 @@
+---
+layout: skinny
+title:  "My Fiction"
+section: fiction
+permalink: /fiction/
+---
+
+{% assign posts = site.fiction %}
+
+<!-- Fiction Index -->
+<main class="site-main">
+    <div class="site-content">
+        <div class="post-list inner">
+            {% for post in posts reversed %}
+            {% include postbox.html %}
+            {% endfor %}
+        </div><!-- .post-list -->
+
+        <!-- Pagination-->
+        {% include pagination.html %}
+
+    </div><!-- .site-content -->
+</main><!-- .site-main -->

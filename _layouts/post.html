@@ -1,21 +1,77 @@
 ---
 layout: default
-section: blog
+disqus: false
+post_class: post-template
 ---
 
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<main class="site-main">
+    <div class="site-content">
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
+        <article class="post-template">
 
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
-  <br />
-  <footer class="post-footer">
-    Posted in: {{ page.categories | array_to_sentence_string }}
-  </footer>
+            <header class="{% if page.featured_image %}cover post-header{% else %}cover post-header skinny{% endif %}">
+            
+                {% if page.featured_image %}
+                <div class="cover-bg" style="background-image: url({{ site.baseurl }}{{ page.featured_image }})">
+                </div>
+                {% endif %}
+                <div class="cover-content">
+                    <div class="inner">
+                
+                        <h1 class="post-title">{{ page.title }}</h1>
+                
+                        {% if page.tags.size > 0 %}
+                        <div class="tag-links">
+                            {% for tag in page.tags %} {% if forloop.index == page.tags.size %}
+                            <a href='/tag/{{ tag | downcase | replace: ' ', '- ' }}/'>{{ tag | camelcase }}</a>
+                            {% else %}
+                            <a href='/tag/{{ tag | downcase | replace: ' ', '- ' }}/'>{{ tag | camelcase }}</a>
+                            {% endif %}
+                            {% endfor %}
+                        </div><!-- .tag-links -->
+                        {% endif %}
+                
+                        <div class="post-meta">
+                            <span class="post-meta-wrap">
+                                <time class="published" datetime="{{ page.date | date: "%Y-%m-%d" }}">
+                                    {{ page.date | date: "%B %-d, %Y" }}
+                                </time>
+                            </span>
+                        </div><!-- .post-meta -->
+                
+                        {% if page.featured_image %}
+                        <a href="#" class="arrow-down"><span class="screen-reader-text">Scroll Down</span></a>
+                        {% endif %}
+                    </div><!-- .inner -->
+                </div><!-- .cover-content -->
 
-</article>
+            </header><!-- .cover -->
+
+
+            <div class="inner">
+            <div class="post-content">
+                {{content}}
+            </div>
+
+            <footer class="post-footer share-post">
+            
+            
+                <span>Share:</span>
+                <a class="circle" target="_blank"
+                    href="https://twitter.com/share?text={{ page.title | url_encode }}&amp;url={{ site.production_url }}{{ page.url | remove_first: '/' }}">
+                <i class="icon-twitter" aria-hidden="true"></i><span class="screen-reader-text">Twitter</span>
+                </a>
+                <a class="circle" target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u={{ site.production_url }}{{ page.url | remove_first: '/' }}"><i class="icon-facebook" aria-hidden="true"></i><span class="screen-reader-text">Facebook</span></a>
+            
+            
+            </footer>
+
+            {% include disqus.html %}
+            </div><!-- .inner -->
+        </article>
+
+        {% include post-navigation.html %}
+
+    </div><!-- .site-content -->
+</main><!-- .site-main -->

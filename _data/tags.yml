@@ -1,0 +1,9 @@
+politics:
+  name: politics
+  description: false
+code:
+  name: code
+  description: false
+life:
+  name: life
+  description: false

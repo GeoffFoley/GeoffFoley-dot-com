@@ -1,29 +1,56 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# Site setings
+name: 'GF'
+description: "I'm a Software Engineer / Web Developer, filmmaker, writer, musician"
+meta_description: 'Jekyll template, minimal style, perfect for bloggers.'
+greetings: 'My name is Geoff Foley'
+logo:
+favicon: 'assets/images/favicon.ico'
+baseurl: 
+production_url: https://geofffoley.com/
+#disqus: 'justgoodthemes'
+#mailchimp_url: '//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117'
+cover_image: covers/IMG_2248.jpeg
+# Add your GA Tracking Id
+ga_analytics: 
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: "Geoff Foley Dot Com"
+# Contact form setings
 email: geoff@geofffoley.com
-description: >- # this means to ignore newlines until "baseurl:"
-  The online home of Geoff Foley.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://geofffoley.com" # the base hostname & protocol for your site, e.g. http://example.com
-#twitter_username: jekyllrb
-github_username:  geofffoley
+contact_page_description: "Horace theme comes with a contact form built-in. You can use this form with Formspree service and get up to 50 submissions for free. Also, you can easily switch to another service if you want."
+thankyou_page_description: "Your message has been successfully sent. We will contact you very soon!"
 
-permalink: /:title/
+# Social links
+#twitter: 'username'
+#facebook: 'username'
+github: 'geofffoley'
+#codepen: 'username'
+#dribbble: 'username'
+##medium: '@username'
+#instagram: 'username'
+#pinterest: 'username'
+#linkedin: 'username'
+#producthunt: '@username'
 
+# Navigation
+navigation:
+  - text: Info
+    url: /about
+  - text: Poetry
+    url: /poetry
+  - text: Fiction
+    url: /fiction
+  - text: Film
+    url: /film
+  - text: My Resume
+    url: /resume
+
+# Pagination
+paginate: 7
+paginate_path: /page:num/
+
+# Permalinks
+permalink: /:title
+
+# Collections
 collections_dir: collections
 
 collections:
@@ -34,7 +61,7 @@ collections:
 
   posts:
     output: true
-    title: The Foley Bag
+    title: Thoughts
     permalink: /blog/:title:output_ext
 
   fiction:
@@ -42,29 +69,32 @@ collections:
     title: Stories
     permalink: /fiction/:title:output_ext
 
-# Build settings
+  gallery:
+    output: true
+    title: Gallery
+    permalink: /gallery/:title:output_ext
+
+# Other
 markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-exclude:
-  - about.md
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
 
-#default settings
-defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-    values:
-      layout: "default"
+#Jekyll-Photo-Gallery Settings
+exiftag:
+ sources:
+   - assets/images/photography #Set to location of photos
+
+#MiniMagick
+#https://github.com/zroger/jekyll-minimagick
+mini_magick:
+    photography:
+        source: assets/images/photography
+        destination: assets/images/photography/thumbnails
+        resize: "1280x720"
+    headers:
+        source: assets/images/headers
+        destination: assets/images/headers/thumbnails
+        resize: "400x250"

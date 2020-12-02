@@ -1,0 +1,25 @@
+---
+layout: photography
+title:  "Photo Gallery"
+section: gallery
+permalink: /gallery/
+---
+
+{% assign posts = site.gallery %}
+
+<!-- Gallery Index -->
+<main class="site-main">
+    <div class="site-content">
+        <div class="post-list inner">
+            {% for post in site.posts %}
+                {% if post.layout == 'album' %}
+                    {% include post-grid-cards.html %}
+                {% endif %}
+            {% endfor %}
+        </div><!-- .post-list -->
+
+        <!-- Pagination-->
+        {% include pagination.html %}
+
+    </div><!-- .site-content -->
+</main><!-- .site-main -->

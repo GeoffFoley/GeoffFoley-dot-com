@@ -1,20 +1,14 @@
 <footer class="site-footer">
+    <div class="inner">
 
-  <div class="wrapper">
+        {% include social-links.html %}
+        <div class="site-info">
+            <a href="#">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }}
+            <br /> Powered by
+            <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+        </div><!-- .site-info -->
 
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>{{ site.title }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        </ul>
-      </div>
+        <a href="#page" class="arrow-up" title="Back to Top"><span class="screen-reader-text">Back to the top</span></a>
 
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
-      </div>
-    </div>
-
-  </div>
-
-</footer>
+    </div><!-- .inner -->
+</footer><!-- .site-footer -->
